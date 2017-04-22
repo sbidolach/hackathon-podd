@@ -12,13 +12,13 @@ const project = {id: 5, name: 'XXXX', description: '', funds: '£5.000', icon: '
 
 export default {
   getProjects: (cb) => {
-    //   return cb(null, projects)
+      return cb(null, projects)
       axios.get('/api/projects')
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
   addProject: (values, cb) => {
-    //   return cb(null, project)
+      return cb(null, project)
       axios.post('/api/project', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))

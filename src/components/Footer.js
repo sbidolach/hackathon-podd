@@ -11,6 +11,8 @@ class Footer extends React.Component {
             <div className="mdl-mini-footer__left-section">
               <div className="mdl-logo">Title</div>
               <ul className="mdl-mini-footer__link-list">
+                <li><a href="/about">Aboout</a></li>
+                <li><a href="/contact">Contact</a></li>
                 <li><a href="/help">Help</a></li>
                 <li><a href="/terms">Privacy & Terms</a></li>
               </ul>

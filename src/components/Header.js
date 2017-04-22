@@ -15,8 +15,10 @@ class Header extends React.Component {
         <span className="mdl-layout-title"><Link to={'/'}>Charity organizations</Link></span>
         <div className="mdl-layout-spacer"></div>
         <nav className="mdl-navigation mdl-layout--large-screen-only">
-          <Link className="mdl-navigation__link" to={'/about'}>About</Link>
-          <Link className="mdl-navigation__link" to={'/help'}>Help</Link>
+          <Link className="mdl-navigation__link" to={'/registraction'}>Registration</Link>
+          <Link className="mdl-navigation__link" to={'/account'}>Account</Link>
+          <Link className="mdl-navigation__link" to={'/projects'}>Projects</Link>
+          <Link className="mdl-navigation__link" to={'/marketplace'}>Marketplace</Link>
           <Link className="mdl-navigation__link" to={'/contact'}>Contact</Link>
         </nav>
       </div>
