@@ -6,7 +6,7 @@ import ProjectSideBar from './ProjectSideBar'
 
 const styleMain = {minHeight: '595px'}
 
-export default ({ projects = {} }) => (
+export default ({ projects = {}, suppliers = {} }) => (
     <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <Header />
       <main className="mdl-layout__content">

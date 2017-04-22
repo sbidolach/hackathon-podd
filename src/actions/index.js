@@ -7,6 +7,12 @@ export const getAllProjects = () => dispatch => {
   })
 }
 
+export const getAllSuppliers = () => dispatch => {
+  server.getSuppliers((ex, suppliers) => {
+    dispatch({type: types.RECEIVE_SUPPLIERS, suppliers})
+  })
+}
+
 export const addProject = (project, cb) => (dispatch, getState) => {
   server.addProject(project, (ex, project) => {
     if (!ex) {

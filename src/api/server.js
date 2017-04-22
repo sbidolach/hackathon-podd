@@ -10,6 +10,14 @@ const projects = [
 
 const project = {id: 5, name: 'XXXX', description: '', funds: '£5.000', icon: 'star', lat: 51.523, lng: -0.085};
 
+const suppliers = [
+    {id: 1, name: 'Energy suppliers & smart meters', description: '', cost: '£14.000', quality: 3},
+    {id: 2, name: 'Home Retail Group', description: '', cost: '£14.000', quality: 3},
+    {id: 3, name: 'Beacon products', description: '', cost: '£14.000', quality: 3},
+    {id: 4, name: 'TJ Morris', description: '', cost: '£14.000', quality: 3}
+];
+
+
 export default {
   getProjects: (cb) => {
       return cb(null, projects)
@@ -22,5 +30,8 @@ export default {
       axios.post('/api/project', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
+  },
+  getSuppliers: (cb) => {
+      return cb(null, suppliers)
   }
 }

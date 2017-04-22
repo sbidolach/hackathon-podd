@@ -7,7 +7,7 @@ import { compose } from 'recompose'
 import thunk from 'redux-thunk'
 
 import reducer from './reducers'
-import { getAllProjects } from './actions'
+import { getAllProjects, getAllSuppliers } from './actions'
 
 // components
 import Home from './components/Home'
@@ -15,6 +15,7 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Help from './components/Help'
 import Project from './components/Project'
+import Marketplace from './components/Marketplace'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, composeEnhancers(
@@ -22,6 +23,7 @@ const store = createStore(reducer, composeEnhancers(
 ));
 
 store.dispatch(getAllProjects())
+store.dispatch(getAllSuppliers())
 
 const App = () => (
   <Provider store={store}>
@@ -31,6 +33,7 @@ const App = () => (
         <Route path="/help" component={Help} />
         <Route path="/contact" component={Contact} />
         <Route path="/p/:id" component={Project} />
+        <Route path="/marketplace" component={Marketplace} />
         <Route path="/" component={Home} />
       </Switch>
     </Router>
