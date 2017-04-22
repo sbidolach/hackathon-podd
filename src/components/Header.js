@@ -12,12 +12,11 @@ class Header extends React.Component {
     return (
     <header className="mdl-layout__header">
       <div className="mdl-layout__header-row" style={styleLogo}>
-        <span className="mdl-layout-title"><Link to={'/'}>Charity organizations</Link></span>
+        <span className="mdl-layout-title"><Link to={'/'}>Proof of Donation Distribution</Link></span>
         <div className="mdl-layout-spacer"></div>
         <nav className="mdl-navigation mdl-layout--large-screen-only">
           <Link className="mdl-navigation__link" to={'/registraction'}>Registration</Link>
           <Link className="mdl-navigation__link" to={'/account'}>Account</Link>
-          <Link className="mdl-navigation__link" to={'/projects'}>Projects</Link>
           <Link className="mdl-navigation__link" to={'/marketplace'}>Marketplace</Link>
           <Link className="mdl-navigation__link" to={'/contact'}>Contact</Link>
         </nav>

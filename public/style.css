@@ -60,3 +60,50 @@
     text-align: center;
     padding: 35px;
 }
+
+/* IMAGES */
+.demo-card-image.mdl-card {
+  float: left;
+  width: 256px;
+  height: 64px;
+}
+
+.demo-card-image.p1 {
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4hmGTNqkSvGnhevC8iA4PEbUdx85T3AbjDKnhVpPCXT5fLi_C') center / cover;
+}
+
+.demo-card-image.p2 {
+  background: url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRvksYE0GMCCHkc351TzrW7srQAzLfEZ1I-Aqtu9WZGq9L05D2iPw') center / cover;
+}
+
+.demo-card-image.p3 {
+  background: url('http://www.citysquared.co.uk/images/products-essentials-litter-bin-1.jpg') center / cover;
+}
+
+.demo-card-image.p4 {
+  background: url('https://getmdl.io/assets/demos/image_card.jpg') center / cover;
+}
+
+.demo-card-image > .mdl-card__actions {
+  height: 52px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 1);
+}
+.demo-card-image__filename {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.sb-project-images {
+    padding: 16px;
+}
+
+.sb-project-vote button {
+    width: 98%;
+    margin: 16px;
+}
+
+.demo-card-image {
+    margin: 0 10px 20px 10px;
+}
