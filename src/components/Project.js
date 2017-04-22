@@ -6,6 +6,10 @@ import Header from './Header'
 import Footer from './Footer'
 import MenuSideBar from './MenuSideBar'
 
+const enhance = compose(
+  connect((state, props) => ({ project: state.projects.find((v) => v.id === Number(props.match.params.id) ) }) )
+)
+
 const menuItems = [
     {label: 'Activity Feed', path: ''},
     {label: 'Project statistics', path: ''},
@@ -15,9 +19,60 @@ const menuItems = [
     {label: 'Transaction download', path: ''}
 ]
 
-const enhance = compose(
-  connect((state, props) => ({ project: state.projects.find((v) => v.id == props.match.params.id ) }) ),
-)
+const transactionData = [
+    [
+        {name:'Bench', date: '2017-04-20 16:44:00', quantity: '20', price: '$150'},
+        {name:'Playground', date: '2017-04-20 16:44:00', quantity: '1', price: '$2000'},
+        {name:'Bin', date: '2017-04-20 16:44:00', quantity: '10', price: '$250'}
+    ],
+    [
+        {name:'Bench', date: '2017-04-20 16:44:00', quantity: '20', price: '$150'},
+        {name:'Playground', date: '2017-04-20 16:44:00', quantity: '1', price: '$2000'},
+        {name:'Bin', date: '2017-04-20 16:44:00', quantity: '10', price: '$250'}
+    ]
+]
+
+const TransactionItem = ({t}) => (
+    <tr>
+      <td className="mdl-data-table__cell--non-numeric">{t.name}</td>
+      <td>{t.date}</td>
+      <td>{t.quantity}</td>
+      <td>{t.price}</td>
+    </tr>)
+
+const TransactionTable = ({transations = [], styleTable}) => (
+    <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
+      <thead>
+        <tr>
+          <th className="mdl-data-table__cell--non-numeric">Material</th>
+          <th>Date</th>
+          <th>Quantity</th>
+          <th>Unit price</th>
+        </tr>
+      </thead>
+      <tbody>
+      { Object.keys(transations).map((key, index) => {
+          const t = transations[key]
+          return (<TransactionItem
+                      key={key}
+                      t={t}/>)
+      })}
+      </tbody>
+    </table>)
+
+const TransationImages = ({transations = []}) => (
+    <div className="sb-project-images">
+        { Object.keys(transations).map((key, index) => {
+            const t = transations[key]
+            const imgClass = 'demo-card-image mdl-card mdl-shadow--2dp p'+(index + 1);
+            return (<div className={imgClass}>
+                      <div className="mdl-card__title mdl-card--expand"></div>
+                      <div className="mdl-card__actions">
+                        <span className="demo-card-image__filename">{t.name} x {t.quantity}</span>
+                      </div>
+                    </div>)
+        })}
+    </div>)
 
 class Project extends React.Component {
 
@@ -49,59 +104,9 @@ class Project extends React.Component {
                             </div>
                         </div>
                         <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="1" style={{margin: '16px'}}>account_box</div>
-                        <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
-                          <thead>
-                            <tr>
-                              <th className="mdl-data-table__cell--non-numeric">
-                                Material
-                              </th>
-                              <th>Date</th>
-                              <th>Quantity</th>
-                              <th>Unit price</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td className="mdl-data-table__cell--non-numeric">Bench</td>
-                              <td>2017-04-20 16:44:00</td>
-                              <td>20</td>
-                              <td>$150</td>
-                            </tr>
-                            <tr>
-                              <td className="mdl-data-table__cell--non-numeric">Playground</td>
-                              <td>2017-04-20 16:44:00</td>
-                              <td>1</td>
-                              <td>$2000</td>
-                            </tr>
-                            <tr>
-                              <td className="mdl-data-table__cell--non-numeric">Bin</td>
-                              <td>2017-04-20 16:44:00</td>
-                              <td>10</td>
-                              <td>$200</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        <TransactionTable transations={transactionData[0]} styleTable={styleTable} />
                         <br />
-                        <div className="sb-project-images">
-                            <div className="demo-card-image mdl-card mdl-shadow--2dp p1">
-                              <div className="mdl-card__title mdl-card--expand"></div>
-                              <div className="mdl-card__actions">
-                                <span className="demo-card-image__filename">Bench x 20</span>
-                              </div>
-                            </div>
-                            <div className="demo-card-image mdl-card mdl-shadow--2dp p2">
-                              <div className="mdl-card__title mdl-card--expand"></div>
-                              <div className="mdl-card__actions">
-                                <span className="demo-card-image__filename">Playground</span>
-                              </div>
-                            </div>
-                            <div className="demo-card-image mdl-card mdl-shadow--2dp p3">
-                              <div className="mdl-card__title mdl-card--expand"></div>
-                              <div className="mdl-card__actions">
-                                <span className="demo-card-image__filename">Bin x 20</span>
-                              </div>
-                            </div>
-                        </div>
+                        <TransationImages transations={transactionData[0]} />
                         <br/>
                         <button
                             className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
@@ -110,37 +115,21 @@ class Project extends React.Component {
                         </button>
                         <br />
                         <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="2" style={{margin: '16px'}}>account_box</div>
-                        <table className="mdl-data-table mdl-data-table--selectable" style={styleTableNext}>
-                          <thead>
-                            <tr>
-                              <th className="mdl-data-table__cell--non-numeric">Material</th>
-                              <th>Date</th>
-                              <th>Quantity</th>
-                              <th>Unit price</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td className="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-                              <td>2017-04-20 16:44:00</td>
-                              <td>50</td>
-                              <td>$1.25</td>
-                            </tr>
-                            <tr>
-                              <td className="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-                              <td>2017-04-20 16:44:00</td>
-                              <td>10</td>
-                              <td>$2.35</td>
-                            </tr>
-                            <tr>
-                              <td className="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-                              <td>2017-04-20 16:44:00</td>
-                              <td>10</td>
-                              <td>$2.35</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        <TransactionTable transations={transactionData[0]} styleTable={styleTable} />
                         <br />
+                        <TransationImages transations={transactionData[0]} />
+                        <br/>
+                        <button
+                            className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                            onClick={() => alert('VOTED')}>
+                          Vote (Next Phase)
+                        </button>
+                        <br />
+                        <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="3" style={{margin: '16px'}}>account_box</div>
+                        <TransactionTable transations={transactionData[1]} styleTable={styleTable} />
+                        <br />
+                        <TransationImages transations={transactionData[0]} />
+                        <br/>
                         <button
                             className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
                             onClick={() => alert('End')}>
