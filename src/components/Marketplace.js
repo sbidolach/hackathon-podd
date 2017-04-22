@@ -28,6 +28,9 @@ class Marketplace extends React.Component {
             <th className="mdl-data-table__cell--non-numeric">Material</th>
             <th>Cost</th>
             <th>Quality</th>
+            <th>Lead Time</th>
+            <th>Rating</th>
+            <th>Verified</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +39,9 @@ class Marketplace extends React.Component {
               <td className="mdl-data-table__cell--non-numeric">{s.name}</td>
               <td>{s.cost}</td>
               <td>{s.quality}</td>
+              <td>{s.leadTime}</td>
+              <td>{s.rating}</td>
+              <td>{s.verified}</td>
             </tr>)
         })}
 

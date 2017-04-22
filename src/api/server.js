@@ -11,10 +11,10 @@ const projects = [
 const project = {id: 5, name: 'XXXX', description: '', funds: '£5.000', icon: 'star', lat: 51.523, lng: -0.085};
 
 const suppliers = [
-    {id: 1, name: 'Energy suppliers & smart meters', description: '', cost: '£14.000', quality: 3},
-    {id: 2, name: 'Home Retail Group', description: '', cost: '£14.000', quality: 3},
-    {id: 3, name: 'Beacon products', description: '', cost: '£14.000', quality: 3},
-    {id: 4, name: 'TJ Morris', description: '', cost: '£14.000', quality: 3}
+    {id: 1, name: 'Energy suppliers & smart meters', description: '', cost: '£14.000', quality: 3, leadTime: '1 Week', rating: 3, verified: 'Yes'},
+    {id: 2, name: 'Home Retail Group', description: '', cost: '£11.000', quality: 3, leadTime: '4 Days', rating: 3, verified: 'Yes'},
+    {id: 3, name: 'Beacon products', description: '', cost: '£4.000', quality: 3, leadTime: '1 Month', rating: 4, verified: 'Yes'},
+    {id: 4, name: 'TJ Morris', description: '', cost: '£12.000', quality: 3, leadTime: '1 Day', rating: 5, verified: 'Yes'}
 ];
 
 
