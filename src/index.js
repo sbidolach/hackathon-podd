@@ -27,6 +27,7 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <Switch>
+        <Route path="/projects" component={About} />
         <Route path="/about" component={About} />
         <Route path="/help" component={Help} />
         <Route path="/contact" component={Contact} />

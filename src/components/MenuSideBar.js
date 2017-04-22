@@ -13,12 +13,6 @@ class MenuSideBar extends React.Component {
 
     return (
     <div>
-        <button
-            className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-            onClick={() => setModal('addMe')}>
-          Add Me to Project
-        </button>
-        <AddMeForm open={(modal === 'addMe')} handleClose={() => setModal(null)} />
         <ul className="mdl-list">
         { Object.keys(menuItems).map((key, index) => {
             const i = menuItems[key]
