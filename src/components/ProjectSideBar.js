@@ -46,9 +46,9 @@ class ProjectSideBar extends React.Component {
             </div>
         </form>
         <button
-            className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+            className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
             onClick={() => setModal('addProject')}>
-          Add charity project
+          Add Project
         </button>
         <AddProjectForm open={(modal === 'addProject')} handleClose={() => setModal(null)} />
         { isEmpty(projects) ?

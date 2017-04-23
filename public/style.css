@@ -18,6 +18,10 @@
     font-weight: 400;
 }
 
+.mdl-layout__header-row .mdl-navigation__link {
+    color: white
+}
+
 /* MODAL FORMS */
 .sb-modal-form .sb-footer {
     padding: 16px 0 16px 16px;

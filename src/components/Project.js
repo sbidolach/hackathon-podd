@@ -65,15 +65,15 @@ const Images = ({transactions = []}) => (
         })}
     </div>)
 
-const Box = ({transactions = [], styleTable = "", key}) => (
+const Box = ({transactions = [], styleTable = "", index}) => (
     <div>
-        <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="1" style={{margin: '16px'}}>account_box</div>
+        <div className="material-icons mdl-badge mdl-badge--overlap" data-badge={index} style={{margin: '16px'}}>account_box</div>
         <TableTransaction transactions={transactions} styleTable={styleTable} />
         <br />
-        <Images transactions={transactions} key={key} />
+        <Images transactions={transactions} key={index} />
         <br/>
         <button
-            className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+            className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
             onClick={() => alert('VOTED')}>
           Vote (Next Phase)
         </button>
@@ -117,7 +117,7 @@ class Project extends React.Component {
                         </div>
                         { Object.keys(transactions).map((key, index) => {
                             const t = transactions[key]
-                            return <Box key={key} transactions={t} styleTable={styleTable} />
+                            return <Box key={key} index={key} transactions={t} styleTable={styleTable} />
                         })}
                     </div>
                 </div>
