@@ -93,6 +93,7 @@ class Project extends React.Component {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
     const styleH3 = {margin: 0}
     const styleH3Right = {margin: 0, textAlign: 'right'}
+    const styleDonateBtn = {margin: 0}
     const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
     const styleTableNext = {width: '98%', padding: '16px', borderLeft: 0, margin: '16px 0 0 16px', borderRight: 0}
     const { project, transactions } = this.props
@@ -112,7 +113,7 @@ class Project extends React.Component {
                                 <h3 style={styleH3}>{project.name}</h3>
                             </div>
                             <div className="mdl-cell mdl-cell--3-col" >
-                              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                              <button style={styleDonateBtn} className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                                 Donate
                               </button>
                             </div>
