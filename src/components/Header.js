@@ -18,6 +18,7 @@ class Header extends React.Component {
           <Link className="mdl-navigation__link" to={'/registraction'}>Registration</Link>
           <Link className="mdl-navigation__link" to={'/account'}>Account</Link>
           <Link className="mdl-navigation__link" to={'/marketplace'}>Marketplace</Link>
+          <Link className="mdl-navigation__link" to={'/chat'}>Chat</Link>
           <Link className="mdl-navigation__link" to={'/contact'}>Contact</Link>
         </nav>
       </div>

@@ -11,6 +11,7 @@ import { getAllProjects, getAllSuppliers } from './actions'
 
 // components
 import Home from './components/Home'
+import Chat from './components/Chat'
 import About from './components/About'
 import Contact from './components/Contact'
 import Help from './components/Help'
@@ -30,6 +31,7 @@ const App = () => (
     <Router>
       <Switch>
         <Route path="/about" component={About} />
+        <Route path="/chat" component={Chat} />
         <Route path="/help" component={Help} />
         <Route path="/contact" component={Contact} />
         <Route path="/p/:id" component={Project} />
