@@ -79,7 +79,50 @@ server.get('/api/transactions', (req, res) => {
   blockchain.readFromChain(["money"])
     .then((res) => {
       console.log(res.body)
-      res.json(res.body)
+      res.json({
+        "status": "success",
+        "data": [{
+          "hash": "00000000b8980ec1fe96bc1b4425788ddc88dd36699521a448ebca2020b38699",
+          "confirmations": 450820,
+          "strippedsize": 216,
+          "size": 216,
+          "weight": 864,
+          "height": 12345,
+          "version": 1,
+          "versionHex": "00000001",
+          "merkleroot": "fd1dc97a826eb93b485b6bada84a807ee81181f7ab2720cefb5fa96729363157",
+          "tx": ["fd1dc97a826eb93b485b6bada84a807ee81181f7ab2720cefb5fa96729363157"],
+          "time": 1240784732,
+          "mediantime": 1240781715,
+          "nonce": 784807199,
+          "bits": "1d00ffff",
+          "difficulty": 1,
+          "chainwork": "0000000000000000000000000000000000000000000000000000303a303a303a",
+          "previousblockhash": "0000000076876082384460fb5a231cc5a5e874b9762e15a4e7b1fc068f749cdf",
+          "nextblockhash": "00000000a08518aae9f8f95cc295d1331b937b12e1e885b44ed07d95f9a625e5"
+        }, {
+          "hash": "00000000a08518aae9f8f95cc295d1331b937b12e1e885b44ed07d95f9a625e5",
+          "confirmations": 450819,
+          "strippedsize": 216,
+          "size": 216,
+          "weight": 864,
+          "height": 12346,
+          "version": 1,
+          "versionHex": "00000001",
+          "merkleroot": "8e7ba9ca47d3bb14cc135e17e778a632e723cdd278e6e36b3eb8c0ad509395f3",
+          "tx": ["8e7ba9ca47d3bb14cc135e17e778a632e723cdd278e6e36b3eb8c0ad509395f3"],
+          "time": 1240786029,
+          "mediantime": 1240782328,
+          "nonce": 1533109273,
+          "bits": "1d00ffff",
+          "difficulty": 1,
+          "chainwork": "0000000000000000000000000000000000000000000000000000303b303b303b",
+          "previousblockhash": "00000000b8980ec1fe96bc1b4425788ddc88dd36699521a448ebca2020b38699",
+          "nextblockhash": "000000008d806e269593e11064e89772def05d622859624d591ff801512a3fe8"
+        }],
+        "code": 200,
+        "message": ""
+      })
     })
 })
 

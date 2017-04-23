@@ -108,8 +108,13 @@ class Project extends React.Component {
                     </div>
                     <div className="mdl-cell mdl-cell--9-col sb-project-vote" style={styleBorderLeft}>
                         <div className="mdl-grid">
-                            <div className="mdl-cell mdl-cell--9-col">
+                            <div className="mdl-cell mdl-cell--6-col">
                                 <h3 style={styleH3}>{project.name}</h3>
+                            </div>
+                            <div className="mdl-cell mdl-cell--3-col" >
+                              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                Donate
+                              </button>
                             </div>
                             <div className="mdl-cell mdl-cell--3-col" >
                                 <h3 style={styleH3Right}>{project.funds}</h3>
