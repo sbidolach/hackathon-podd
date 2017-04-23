@@ -16,3 +16,4 @@ Simple application for payments in charity organizations. Example page available
 * Run `yarn build`
 * Run `yarn start`
 * Open webpage `http://localhost:3001`
+*
