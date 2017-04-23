@@ -1,17 +1,19 @@
 import React from 'react'
-import { compose } from 'recompose'
+import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 
 import Header from './Header'
 import Footer from './Footer'
 import MenuSideBar from './MenuSideBar'
+import DonateForm from './DonateForm'
 import { getTransactions } from '../actions'
 
 const enhance = compose(
   connect((state, props) => ({
       project: state.projects.find((v) => v.id === Number(props.match.params.id)),
       transactions: state.transactions
-  }))
+  })),
+  withState('modal', 'setModal')
 )
 
 const menuItems = [
@@ -96,7 +98,8 @@ class Project extends React.Component {
     const styleDonateBtn = {margin: 0}
     const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
     const styleTableNext = {width: '98%', padding: '16px', borderLeft: 0, margin: '16px 0 0 16px', borderRight: 0}
-    const { project, transactions } = this.props
+    const { project, transactions, modal, setModal } = this.props
+
 
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -113,9 +116,11 @@ class Project extends React.Component {
                                 <h3 style={styleH3}>{project.name}</h3>
                             </div>
                             <div className="mdl-cell mdl-cell--3-col" >
-                              <button style={styleDonateBtn} className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                              <button style={styleDonateBtn} className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                                  onClick={() => setModal('donationModal')}>
                                 Donate
                               </button>
+                              <DonateForm open={(modal === 'donationModal')} handleClose={() => setModal(null)} />
                             </div>
                             <div className="mdl-cell mdl-cell--3-col" >
                                 <h3 style={styleH3Right}>{project.funds}</h3>
