@@ -75,16 +75,21 @@ server.post('/api/project', async (req, res) => {
   }
 })
 
+server.get('/api/transactions', (req, res) => {
+  blockchain.readFromChain(["money"])
+    .then((res) => {
+      console.log(res.body)
+      res.json(res.body)
+    })
+})
 
-// blockchain.writeToChain(["money","i am test"])
-//   .then((res) => {
-//     console.log(res.body)
-//   })
-// 
-// blockchain.readFromChain(["money"])
-//   .then((res) => {
-//     console.log(res.body)
-//   })
+server.post('/api/transactions', (req, res) => {
+  blockchain.writeToChain(req.body.tags)
+    .then((res) => {
+      console.log(res.body)
+      res.json(res.body)
+    })
+})
 
 
 server.listen(config.general.port, (err) => {
