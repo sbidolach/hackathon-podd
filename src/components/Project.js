@@ -59,7 +59,7 @@ const Images = ({transactions = []}) => (
             return (<div className={imgClass}>
                       <div className="mdl-card__title mdl-card--expand"></div>
                       <div className="mdl-card__actions">
-                        <span className="demo-card-image__filename">{t.name} x {t.quantity}</span>
+                        <span className="demo-card-image__filename">{t.name}</span>
                       </div>
                     </div>)
         })}

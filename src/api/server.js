@@ -19,9 +19,9 @@ const suppliers = [
 
 const transactionData = [
     [
-        {name:'Bench', date: '2017-04-20 16:44:00', quantity: '20', price: '$150'},
-        {name:'Playground', date: '2017-04-20 16:44:00', quantity: '1', price: '$2000'},
-        {name:'Bin', date: '2017-04-20 16:44:00', quantity: '10', price: '$250'}
+        {name:'To buy agricultural products to sell', date: '2017-04-20 16:44:00', quantity: '10', price: '$150'},
+        {name:'To buy farm animals', date: '2017-04-20 16:44:00', quantity: '10', price: '$200'},
+        {name:'Water filter at home ', date: '2017-04-20 16:44:00', quantity: '50', price: '$2500'}
     ],
     [
         {name:'Bench', date: '2017-04-20 16:44:00', quantity: '20', price: '$150'},
@@ -38,13 +38,13 @@ const transactionData = [
 
 export default {
   getProjects: (cb) => {
-      return cb(null, projects)
+       return cb(null, projects)
       axios.get('/api/projects')
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
   addProject: (values, cb) => {
-      return cb(null, project)
+       return cb(null, project)
       axios.post('/api/project', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
