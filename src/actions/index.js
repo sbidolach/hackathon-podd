@@ -13,6 +13,12 @@ export const getAllSuppliers = () => dispatch => {
   })
 }
 
+export const getTransactions = (values) => dispatch => {
+  server.getTransactions(values, (ex, transactions) => {
+    dispatch({type: types.RECEIVE_TRANSACTIONS, transactions})
+  })
+}
+
 export const addProject = (project, cb) => (dispatch, getState) => {
   server.addProject(project, (ex, project) => {
     if (!ex) {

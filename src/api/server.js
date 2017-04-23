@@ -17,6 +17,24 @@ const suppliers = [
     {id: 4, name: 'TJ Morris', description: '', cost: '£12.000', quality: 3, leadTime: '1 Day', rating: 5, verified: 'Yes'}
 ];
 
+const transactionData = [
+    [
+        {name:'Bench', date: '2017-04-20 16:44:00', quantity: '20', price: '$150'},
+        {name:'Playground', date: '2017-04-20 16:44:00', quantity: '1', price: '$2000'},
+        {name:'Bin', date: '2017-04-20 16:44:00', quantity: '10', price: '$250'}
+    ],
+    [
+        {name:'Bench', date: '2017-04-20 16:44:00', quantity: '20', price: '$150'},
+        {name:'Playground', date: '2017-04-20 16:44:00', quantity: '1', price: '$2000'},
+        {name:'Bin', date: '2017-04-20 16:44:00', quantity: '10', price: '$250'}
+    ],
+    [
+        {name:'Bench', date: '2017-04-20 16:44:00', quantity: '20', price: '$150'},
+        {name:'Playground', date: '2017-04-20 16:44:00', quantity: '1', price: '$2000'},
+        {name:'Bin', date: '2017-04-20 16:44:00', quantity: '10', price: '$250'}
+    ]
+]
+
 
 export default {
   getProjects: (cb) => {
@@ -33,5 +51,8 @@ export default {
   },
   getSuppliers: (cb) => {
       return cb(null, suppliers)
+  },
+  getTransactions: (values, cb) => {
+      return cb(null, transactionData)
   }
 }
