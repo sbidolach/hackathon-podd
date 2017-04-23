@@ -9,6 +9,8 @@ const path = require('path');
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
+const blockchain = require('./blockchain')
+
 const { opc: { programmeKey, programmeId, username, password, managedAccountProfile, managedCardProfile, ownerId} } = config
 
 const server = express()
@@ -72,6 +74,18 @@ server.post('/api/project', async (req, res) => {
       return res.send(err)
   }
 })
+
+
+// blockchain.writeToChain(["money","i am test"])
+//   .then((res) => {
+//     console.log(res.body)
+//   })
+// 
+// blockchain.readFromChain(["money"])
+//   .then((res) => {
+//     console.log(res.body)
+//   })
+
 
 server.listen(config.general.port, (err) => {
     if (err) throw err
