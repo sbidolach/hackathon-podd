@@ -5,9 +5,13 @@ import { connect } from 'react-redux'
 import Header from './Header'
 import Footer from './Footer'
 import MenuSideBar from './MenuSideBar'
+import { getTransactions } from '../actions'
 
 const enhance = compose(
-  connect((state, props) => ({ project: state.projects.find((v) => v.id === Number(props.match.params.id) ) }) )
+  connect((state, props) => ({
+      project: state.projects.find((v) => v.id === Number(props.match.params.id)),
+      transactions: state.transactions
+  }))
 )
 
 const menuItems = [
@@ -19,20 +23,7 @@ const menuItems = [
     {label: 'Transaction download', path: ''}
 ]
 
-const transactionData = [
-    [
-        {name:'Bench', date: '2017-04-20 16:44:00', quantity: '20', price: '$150'},
-        {name:'Playground', date: '2017-04-20 16:44:00', quantity: '1', price: '$2000'},
-        {name:'Bin', date: '2017-04-20 16:44:00', quantity: '10', price: '$250'}
-    ],
-    [
-        {name:'Bench', date: '2017-04-20 16:44:00', quantity: '20', price: '$150'},
-        {name:'Playground', date: '2017-04-20 16:44:00', quantity: '1', price: '$2000'},
-        {name:'Bin', date: '2017-04-20 16:44:00', quantity: '10', price: '$250'}
-    ]
-]
-
-const TransactionItem = ({t}) => (
+const Item = ({t}) => (
     <tr>
       <td className="mdl-data-table__cell--non-numeric">{t.name}</td>
       <td>{t.date}</td>
@@ -40,7 +31,7 @@ const TransactionItem = ({t}) => (
       <td>{t.price}</td>
     </tr>)
 
-const TransactionTable = ({transations = [], styleTable}) => (
+const TableTransaction = ({transactions = [], styleTable}) => (
     <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
       <thead>
         <tr>
@@ -51,19 +42,19 @@ const TransactionTable = ({transations = [], styleTable}) => (
         </tr>
       </thead>
       <tbody>
-      { Object.keys(transations).map((key, index) => {
-          const t = transations[key]
-          return (<TransactionItem
+      { Object.keys(transactions).map((key, index) => {
+          const t = transactions[key]
+          return (<Item
                       key={key}
                       t={t}/>)
       })}
       </tbody>
     </table>)
 
-const TransationImages = ({transations = []}) => (
+const Images = ({transactions = []}) => (
     <div className="sb-project-images">
-        { Object.keys(transations).map((key, index) => {
-            const t = transations[key]
+        { Object.keys(transactions).map((key, index) => {
+            const t = transactions[key]
             const imgClass = 'demo-card-image mdl-card mdl-shadow--2dp p'+(index + 1);
             return (<div className={imgClass}>
                       <div className="mdl-card__title mdl-card--expand"></div>
@@ -74,7 +65,29 @@ const TransationImages = ({transations = []}) => (
         })}
     </div>)
 
+const Box = ({transactions = [], styleTable = "", key}) => (
+    <div>
+        <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="1" style={{margin: '16px'}}>account_box</div>
+        <TableTransaction transactions={transactions} styleTable={styleTable} />
+        <br />
+        <Images transactions={transactions} key={key} />
+        <br/>
+        <button
+            className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+            onClick={() => alert('VOTED')}>
+          Vote (Next Phase)
+        </button>
+        <br />
+    </div>)
+
 class Project extends React.Component {
+
+  componentDidMount() {
+      const { dispatch } = this.props
+      dispatch(getTransactions({
+          id: this.props.match.params.id
+      }))
+  }
 
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
@@ -82,8 +95,7 @@ class Project extends React.Component {
     const styleH3Right = {margin: 0, textAlign: 'right'}
     const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
     const styleTableNext = {width: '98%', padding: '16px', borderLeft: 0, margin: '16px 0 0 16px', borderRight: 0}
-
-    const { project } = this.props
+    const { project, transactions } = this.props
 
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -103,38 +115,10 @@ class Project extends React.Component {
                                 <h3 style={styleH3Right}>{project.funds}</h3>
                             </div>
                         </div>
-                        <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="1" style={{margin: '16px'}}>account_box</div>
-                        <TransactionTable transations={transactionData[0]} styleTable={styleTable} />
-                        <br />
-                        <TransationImages transations={transactionData[0]} />
-                        <br/>
-                        <button
-                            className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-                            onClick={() => alert('VOTED')}>
-                          Vote (Next Phase)
-                        </button>
-                        <br />
-                        <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="2" style={{margin: '16px'}}>account_box</div>
-                        <TransactionTable transations={transactionData[0]} styleTable={styleTable} />
-                        <br />
-                        <TransationImages transations={transactionData[0]} />
-                        <br/>
-                        <button
-                            className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-                            onClick={() => alert('VOTED')}>
-                          Vote (Next Phase)
-                        </button>
-                        <br />
-                        <div className="material-icons mdl-badge mdl-badge--overlap" data-badge="3" style={{margin: '16px'}}>account_box</div>
-                        <TransactionTable transations={transactionData[1]} styleTable={styleTable} />
-                        <br />
-                        <TransationImages transations={transactionData[0]} />
-                        <br/>
-                        <button
-                            className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-                            onClick={() => alert('End')}>
-                          Vote (End Project)
-                        </button>
+                        { Object.keys(transactions).map((key, index) => {
+                            const t = transactions[key]
+                            return <Box key={key} transactions={t} styleTable={styleTable} />
+                        })}
                     </div>
                 </div>
             </div>
