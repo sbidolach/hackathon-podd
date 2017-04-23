@@ -34,8 +34,8 @@ class Marketplace extends React.Component {
           </tr>
         </thead>
         <tbody>
-        { suppliers.map((s) => {
-            return (<tr>
+        { suppliers.map((s, i) => {
+            return (<tr key={i}>
               <td className="mdl-data-table__cell--non-numeric">{s.name}</td>
               <td>{s.cost}</td>
               <td>{s.quality}</td>
