@@ -1,6 +1,6 @@
 # Micro payments for charity organizations
 
-Simple application for payments in charity organizations. Example page available on the URL https://podd-baitjwhult.now.sh
+Simple application for payments in charity organizations. Example page available on the URL https://podd-xvcuqyqonc.now.sh
 
 ## Requirements
 
